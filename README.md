@@ -2,7 +2,7 @@
 
 [![GitHub release (with filter)](https://img.shields.io/github/v/release/BooleanCat/option?sort=semver&logo=Go&color=%23007D9C)](https://github.com/BooleanCat/option/releases) [![Actions Status](https://github.com/BooleanCat/option/workflows/test/badge.svg)](https://github.com/BooleanCat/option/actions) [![Go Reference](https://pkg.go.dev/badge/github.com/BooleanCat/option.svg)](https://pkg.go.dev/github.com/BooleanCat/option) [![Go Report Card](https://goreportcard.com/badge/github.com/BooleanCat/option)](https://goreportcard.com/report/github.com/BooleanCat/option) [![codecov](https://codecov.io/gh/BooleanCat/option/branch/main/graph/badge.svg?token=N2E43RSR14)](https://codecov.io/gh/BooleanCat/option)
 
-Support user-friendly optional types in Go.
+Support user-friendly, type-safe optionals in Go.
 
 ```go
 value = option.Some(4)
