@@ -9,18 +9,24 @@ import (
 )
 
 func TestMarshalSome(t *testing.T) {
+	t.Parallel()
+
 	data, err := json.Marshal(option.Some(4))
 	assert.Nil(t, err)
 	assert.Equal(t, string(data), "4")
 }
 
 func TestMarshalNone(t *testing.T) {
+	t.Parallel()
+
 	data, err := json.Marshal(option.None[int]())
 	assert.Nil(t, err)
 	assert.Equal(t, string(data), "null")
 }
 
 func TestMarshalSomeParsed(t *testing.T) {
+	t.Parallel()
+
 	type name struct {
 		MiddleName option.Option[string] `json:"middle_name"`
 	}
@@ -31,6 +37,8 @@ func TestMarshalSomeParsed(t *testing.T) {
 }
 
 func TestMarshalNoneParsed(t *testing.T) {
+	t.Parallel()
+
 	type name struct {
 		MiddleName option.Option[string] `json:"middle_name"`
 	}
@@ -41,6 +49,8 @@ func TestMarshalNoneParsed(t *testing.T) {
 }
 
 func TestUnmarshalSome(t *testing.T) {
+	t.Parallel()
+
 	var number option.Option[int]
 	err := json.Unmarshal([]byte("4"), &number)
 	assert.Nil(t, err)
@@ -48,6 +58,8 @@ func TestUnmarshalSome(t *testing.T) {
 }
 
 func TestUnmarshalNone(t *testing.T) {
+	t.Parallel()
+
 	var number option.Option[int]
 	err := json.Unmarshal([]byte("null"), &number)
 	assert.Nil(t, err)
@@ -55,6 +67,8 @@ func TestUnmarshalNone(t *testing.T) {
 }
 
 func TestUnmarshalEmpty(t *testing.T) {
+	t.Parallel()
+
 	type name struct {
 		MiddleName option.Option[string] `json:"middle_name"`
 	}
@@ -66,6 +80,8 @@ func TestUnmarshalEmpty(t *testing.T) {
 }
 
 func TestUnmarshalError(t *testing.T) {
+	t.Parallel()
+
 	var number option.Option[int]
 	err := number.UnmarshalJSON([]byte("not a number"))
 	assert.NotNil(t, err)

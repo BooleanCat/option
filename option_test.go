@@ -79,19 +79,27 @@ func ExampleOption_Expect() {
 }
 
 func TestSomeStringer(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, fmt.Sprintf("%s", option.Some("foo")), "Some(foo)") //nolint:gosimple
 	assert.Equal(t, fmt.Sprintf("%s", option.Some(42)), "Some(42)")     //nolint:gosimple
 }
 
 func TestNoneStringer(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, fmt.Sprintf("%s", option.None[string]()), "None") //nolint:gosimple
 }
 
 func TestSomeUnwrap(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.Some(42).Unwrap(), 42)
 }
 
 func TestNoneUnwrap(t *testing.T) {
+	t.Parallel()
+
 	defer func() {
 		assert.Equal(t, fmt.Sprint(recover()), "called `Option.Unwrap()` on a `None` value")
 	}()
@@ -101,56 +109,80 @@ func TestNoneUnwrap(t *testing.T) {
 }
 
 func TestSomeUnwrapOr(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.Some(42).UnwrapOr(3), 42)
 }
 
 func TestNoneUnwrapOr(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.None[int]().UnwrapOr(3), 3)
 }
 
 func TestSomeUnwrapOrElse(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.Some(42).UnwrapOrElse(func() int { return 41 }), 42)
 }
 
 func TestNoneUnwrapOrElse(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.None[int]().UnwrapOrElse(func() int { return 41 }), 41)
 }
 
 func TestSomeUnwrapOrZero(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.Some(42).UnwrapOrZero(), 42)
 }
 
 func TestNoneUnwrapOrZero(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.None[int]().UnwrapOrZero(), 0)
 }
 
 func TestIsSome(t *testing.T) {
+	t.Parallel()
+
 	assert.True(t, option.Some(42).IsSome())
 	assert.False(t, option.None[int]().IsSome())
 }
 
 func TestIsNone(t *testing.T) {
+	t.Parallel()
+
 	assert.False(t, option.Some(42).IsNone())
 	assert.True(t, option.None[int]().IsNone())
 }
 
 func TestSomeValue(t *testing.T) {
+	t.Parallel()
+
 	value, ok := option.Some(42).Value()
 	assert.Equal(t, value, 42)
 	assert.True(t, ok)
 }
 
 func TestNoneValue(t *testing.T) {
+	t.Parallel()
+
 	value, ok := option.None[int]().Value()
 	assert.Equal(t, value, 0)
 	assert.False(t, ok)
 }
 
 func TestSomeExpect(t *testing.T) {
+	t.Parallel()
+
 	assert.Equal(t, option.Some(42).Expect("oops"), 42)
 }
 
 func TestNoneExpect(t *testing.T) {
+	t.Parallel()
+
 	defer func() {
 		assert.Equal(t, fmt.Sprint(recover()), "oops")
 	}()
