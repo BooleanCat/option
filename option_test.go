@@ -81,14 +81,14 @@ func ExampleOption_Expect() {
 func TestSomeStringer(t *testing.T) {
 	t.Parallel()
 
-	assert.Equal(t, fmt.Sprintf("%s", option.Some("foo")), "Some(foo)") //nolint:gosimple
-	assert.Equal(t, fmt.Sprintf("%s", option.Some(42)), "Some(42)")     //nolint:gosimple
+	assert.Equal(t, fmt.Sprintf("%s", option.Some("foo")), "Some(foo)") //nolint:staticcheck
+	assert.Equal(t, fmt.Sprintf("%s", option.Some(42)), "Some(42)")     //nolint:staticcheck
 }
 
 func TestNoneStringer(t *testing.T) {
 	t.Parallel()
 
-	assert.Equal(t, fmt.Sprintf("%s", option.None[string]()), "None") //nolint:gosimple
+	assert.Equal(t, fmt.Sprintf("%s", option.None[string]()), "None") //nolint:staticcheck
 }
 
 func TestSomeUnwrap(t *testing.T) {
